@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portofolio Jasa Pembuatan Website</title>
+    <meta name="description" content="Portofolio jasa pembuatan website – modern, cepat, responsif. Hubungi untuk konsultasi gratis dan penawaran." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --text: #0f172a; /* slate-900 */
+        --muted: #475569; /* slate-600 */
+        --border: #e2e8f0; /* slate-200 */
+        --accent: #111827; /* gray-900 for strong CTA */
+        --accent-contrast: #ffffff;
+        --card: #f8fafc; /* slate-50 */
+        --shadow: 0 10px 20px rgba(2, 6, 23, 0.06), 0 2px 6px rgba(2, 6, 23, 0.05);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        line-height: 1.6;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        max-width: 1120px;
+        margin-inline: auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: saturate(180%) blur(8px);
+        border-bottom: 1px solid var(--border);
+        z-index: 50;
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .brand .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--text);
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+      }
+      .menu a {
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .menu a.active,
+      .menu a:hover {
+        color: var(--text);
+      }
+      .cta {
+        padding: 10px 16px;
+        border: 1px solid var(--text);
+        border-radius: 999px;
+        font-weight: 700;
+      }
+      .burger {
+        display: none;
+        background: none;
+        border: 0;
+        font-size: 24px;
+      }
+
+      /* Hero */
+      .hero {
+        padding: 80px 0 40px;
+      }
+      .eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        padding: 6px 10px;
+        border-radius: 999px;
+      }
+      .h1 {
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 18px 0 12px;
+        font-weight: 800;
+      }
+      .lead {
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 720px;
+      }
+      .hero-cta {
+        margin-top: 22px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: 700;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: var(--accent-contrast);
+      }
+      .btn-outline {
+        border: 1px solid var(--border);
+      }
+
+      /* Trust logos */
+      .trust {
+        padding: 28px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        margin-top: 30px;
+      }
+      .trust .row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
+        align-items: center;
+        opacity: 0.75;
+      }
+      .logo-card {
+        background: var(--card);
+        border: 1px dashed var(--border);
+        border-radius: 12px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      /* Value props */
+      .values {
+        padding: 60px 0;
+      }
+      .values .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .value {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+      .value h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+      .value p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      /* Portfolio */
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .section-head h2 {
+        margin: 0;
+        font-size: 28px;
+      }
+      .portfolio {
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
+      }
+      .grid-portfolio {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+      .card {
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+      }
+      .thumb {
+        aspect-ratio: 16/10;
+        background: linear-gradient(135deg, #e5e7eb, #f8fafc);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #334155;
+        font-weight: 700;
+      }
+      .card .meta {
+        padding: 14px;
+      }
+      .meta h4 {
+        margin: 0 0 6px;
+      }
+      .meta p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
+      }
+      .t-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .quote {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+      }
+      .quote p {
+        margin: 0;
+      }
+      .author {
+        margin-top: 10px;
+        font-weight: 700;
+      }
+
+      /* About */
+      .about {
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
+      }
+      .about .wrap {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 32px;
+        align-items: center;
+      }
+      .about .photo {
+        aspect-ratio: 1/1;
+        border-radius: 16px;
+        background: linear-gradient(135deg, #dbeafe, #f1f5f9);
+      }
+
+      /* Contact */
+      .contact {
+        padding: 60px 0;
+        border-top: 1px solid var(--border);
+      }
+      form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      form .full {
+        grid-column: 1/-1;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        font: inherit;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .form-actions {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 32px 0;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      /* Responsive */
+      @media (max-width: 980px) {
+        .values .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .grid-portfolio {
+          grid-template-columns: 1fr 1fr;
+        }
+        .t-grid {
+          grid-template-columns: 1fr;
+        }
+        .about .wrap {
+          grid-template-columns: 1fr;
+        }
+        .trust .row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 720px) {
+        .h1 {
+          font-size: 36px;
+        }
+        .menu {
+          display: none;
+        }
+        .burger {
+          display: block;
+          color: var(--text);
+        }
+        .mobile {
+          display: none;
+          position: fixed;
+          inset: 64px 0 auto 0;
+          background: var(--bg);
+          border-top: 1px solid var(--border);
+          box-shadow: var(--shadow);
+          padding: 12px;
+        }
+        .mobile a {
+          display: block;
+          padding: 12px 8px;
+          border-radius: 10px;
+          color: var(--muted);
+        }
+        .mobile a:hover {
+          background: var(--card);
+          color: var(--text);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container nav" aria-label="Navigasi">
+        <a href="#" class="brand" aria-label="Halaman depan">
+          <span class="dot" aria-hidden="true"></span>
+          <span>NamaBrand</span>
+        </a>
+        <nav class="menu" aria-label="Menu utama">
+          <a href="#about">About</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
+          <a class="cta" href="#contact">Konsultasi Gratis</a>
+        </nav>
+        <button class="burger" aria-label="Buka menu" onclick="toggleMobile()">☰</button>
+      </div>
+      <div class="mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu seluler">
+        <div class="container">
+          <a href="#about" onclick="toggleMobile()">About</a>
+          <a href="#portfolio" onclick="toggleMobile()">Portfolio</a>
+          <a href="#testimonials" onclick="toggleMobile()">Testimonials</a>
+          <a href="#contact" onclick="toggleMobile()">Contact</a>
+          <a class="cta" href="#contact" onclick="toggleMobile()" style="display: inline-block; margin-top: 8px">Konsultasi Gratis</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Jasa Pembuatan Website</span>
+        <h1 class="h1">Saya membangun website <em>cepat</em>, <em>responsif</em>, dan <em>siap konversi</em> untuk bisnis Anda</h1>
+        <p class="lead">Spesialis landing page, company profile, dan toko online. Desain bersih, performa tinggi, serta mudah dikelola. Cocok untuk UMKM, startup, dan professional personal brand.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#contact">Mulai Proyek</a>
+          <a class="btn btn-outline" href="#portfolio">Lihat Portfolio</a>
+        </div>
+
+        <div class="trust">
+          <div class="container">
+            <div class="row">
+              <div class="logo-card">Logo Klien 1</div>
+              <div class="logo-card">Logo Klien 2</div>
+              <div class="logo-card">Logo Klien 3</div>
+              <div class="logo-card">Logo Klien 4</div>
+              <div class="logo-card">Logo Klien 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value Props -->
+    <section class="values">
+      <div class="container">
+        <div class="grid">
+          <div class="value">
+            <h3>Desain Fokus Hasil</h3>
+            <p>Layout yang mengarahkan pengunjung untuk menghubungi atau melakukan pembelian.</p>
+          </div>
+          <div class="value">
+            <h3>Performa & SEO</h3>
+            <p>Kecepatan tinggi, struktur SEO-friendly, dan praktik aksesibilitas modern.</p>
+          </div>
+          <div class="value">
+            <h3>Mudah Dikelola</h3>
+            <p>Konten mudah diubah—bisa statis, CMS, atau integrasi no-code sesuai kebutuhan.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <h2>Project Terbaru</h2>
+          <a href="#contact">Minta Studi Kasus →</a>
+        </div>
+        <div class="grid-portfolio">
+          <article class="card">
+            <div class="thumb">Thumbnail Proyek</div>
+            <div class="meta">
+              <h4>Landing Page Produk</h4>
+              <p>Meningkatkan leads +45% dalam 3 bulan.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb">Thumbnail Proyek</div>
+            <div class="meta">
+              <h4>Company Profile</h4>
+              <p>Struktur informasi jelas, tampilan profesional.</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="thumb">Thumbnail Proyek</div>
+            <div class="meta">
+              <h4>Toko Online</h4>
+              <p>Checkout ringkas, tampil prima di mobile.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2>Apa Kata Klien</h2>
+        </div>
+        <div class="t-grid">
+          <figure class="quote">
+            <p>“Cepat, komunikatif, dan hasilnya melampaui ekspektasi. Trafik dan konversi kami naik signifikan.”</p>
+            <figcaption class="author">— Nama Klien, Perusahaan</figcaption>
+          </figure>
+          <figure class="quote">
+            <p>“Struktur websitenya rapi dan mudah dikelola. Prosesnya juga transparan dari awal.”</p>
+            <figcaption class="author">— Nama Klien 2, Jabatan</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="container wrap">
+        <div>
+          <h2>Tentang Saya</h2>
+          <p>
+            Saya adalah web developer yang fokus pada pembuatan website cepat dan efektif untuk membantu bisnis bertumbuh. Saya menggabungkan desain minimalis, UX yang jelas, dan praktik web modern agar website Anda tidak hanya terlihat
+            bagus, tetapi juga <em>berfungsi</em> dengan baik.
+          </p>
+          <ul>
+            <li>Pengalaman di landing page, company profile, e-commerce.</li>
+            <li>Teknologi: HTML/CSS/JS, React, Next.js, WordPress.</li>
+            <li>Workflow kolaboratif, revisi terstruktur, dan dokumentasi.</li>
+          </ul>
+        </div>
+        <div class="photo" aria-label="Foto/Ilustrasi"></div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Mulai Diskusi Proyek</h2>
+          <p class="lead" style="margin: 0; color: var(--muted)">Balas dalam 24 jam kerja. Konsultasi awal gratis.</p>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Terima kasih! Saya akan menghubungi Anda kembali.');">
+          <div>
+            <label for="name" class="sr-only">Nama</label>
+            <input id="name" name="name" type="text" placeholder="Nama" required />
+          </div>
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" required />
+          </div>
+          <div class="full">
+            <label for="message" class="sr-only">Pesan</label>
+            <textarea id="message" name="message" placeholder="Ceritakan kebutuhan website Anda"></textarea>
+          </div>
+          <div class="form-actions full">
+            <button class="btn btn-primary" type="submit">Kirim Brief</button>
+            <a class="btn btn-outline" href="https://wa.me/6281234567890" target="_blank" rel="noopener">Chat WhatsApp</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap">
+        <p>© <span id="year"></span> NamaBrand. Semua hak dilindungi.</p>
+        <p><a href="#">Kebijakan Privasi</a> · <a href="#">Syarat Layanan</a></p>
+      </div>
+    </footer>
+
+    <script>
+      // Tahun otomatis
+      document.getElementById("year").textContent = new Date().getFullYear();
+      // Toggle mobile menu
+      function toggleMobile() {
+        const el = document.getElementById("mobileMenu");
+        const isOpen = getComputedStyle(el).display !== "none";
+        el.style.display = isOpen ? "none" : "block";
+      }
+      // Aksesibilitas kecil: tutup mobile ketika resize besar
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 720) {
+          document.getElementById("mobileMenu").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
