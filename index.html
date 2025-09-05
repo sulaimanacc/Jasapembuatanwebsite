@@ -568,7 +568,7 @@
           </div>
           <div class="full">
             <label for="message" class="sr-only">Pesan</label>
-            <textarea id="message" name="message" placeholder="Ceritakan kebutuhan website Anda"></textarea>
+            <textarea id="message" name="message" placeholder="Ceritakan kebutuhan website Anda" required></textarea>
           </div>
           <div class="form-actions full">
             <button class="btn btn-primary" type="submit">Kirim Brief</button>
@@ -576,25 +576,44 @@
           </div>
         </form>
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
-          document.getElementById("waForm").addEventListener("submit", function (e) {
+          document.getElementById("waForm").addEventListener("submit", function(e) {
             e.preventDefault();
 
-            let nama = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
-            let pesan = document.getElementById("message").value;
+            let nama = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let pesan = document.getElementById("message").value.trim();
 
-            // Nomor WhatsApp (gunakan format internasional tanpa tanda + atau 0 di depan)
             let nomorWA = "6285654985244";
 
+            // Validasi input
+            if (nama === "" || email === "" || pesan === "") {
+              Swal.fire({
+                icon: "warning",
+                title: "Oops...",
+                text: "Harap isi semua field sebelum mengirim!",
+              });
+              return;
+            }
+
             // Format pesan
-            let text = `Halo, saya ingin membuat website.%0A
-Nama: ${nama}%0A
-Email: ${email}%0A
-Pesan: ${pesan}`;
+            let text = `Halo, saya ingin membuat website.%0A` +
+                       `Nama: ${nama}%0A` +
+                       `Email: ${email}%0A` +
+                       `Pesan: ${pesan}`;
 
             // Redirect ke WhatsApp
-            window.open(`https://wa.me/${nomorWA}?text=${text}`, "_blank");
+            window.open(`https://wa.me/${6285654985244}?text=${permisi saya ingin berdiskusi tentang jasa website anda}`, "_blank");
+
+            // Notifikasi sukses
+            Swal.fire({
+              icon: "success",
+              title: "Pesan berhasil dikirim!",
+              text: "Saya akan segera menghubungi Anda kembali via WhatsApp.",
+              showConfirmButton: false,
+              timer: 3000
+            });
           });
         </script>
       </div>
