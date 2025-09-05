@@ -163,6 +163,7 @@
         align-items: center;
         opacity: 0.75;
         text-align: center;
+        align-content: center;
       }
       .logo-card {
         background: var(--card);
@@ -170,6 +171,7 @@
         border-radius: 12px;
         padding: 12px;
         text-align: center;
+        align-content: center;
       }
 
       /* Value props */
@@ -535,7 +537,8 @@
           <h2>Mulai Diskusi Proyek</h2>
           <p class="lead" style="margin: 0; color: var(--muted)">Balas dalam 24 jam kerja. Konsultasi awal gratis.</p>
         </div>
-        <form onsubmit="event.preventDefault(); alert('Terima kasih! Saya akan menghubungi Anda kembali.');">
+        <!-- 
+      <form onsubmit="event.preventDefault(); alert('Terima kasih! Saya akan menghubungi Anda kembali.');">
           <div>
             <label for="name" class="sr-only">Nama</label>
             <input id="name" name="name" type="text" placeholder="Nama" required />
@@ -553,6 +556,47 @@
             <a class="btn btn-outline" href="https://wa.me/+6285654985244" target="_blank" rel="noopener">Chat WhatsApp</a>
           </div>
         </form>
+        -->
+        <form id="waForm">
+          <div>
+            <label for="name" class="sr-only">Nama</label>
+            <input id="name" name="name" type="text" placeholder="Nama" required />
+          </div>
+          <div>
+            <label for="email" class="sr-only">Email</label>
+            <input id="email" name="email" type="email" placeholder="Email" required />
+          </div>
+          <div class="full">
+            <label for="message" class="sr-only">Pesan</label>
+            <textarea id="message" name="message" placeholder="Ceritakan kebutuhan website Anda"></textarea>
+          </div>
+          <div class="form-actions full">
+            <button class="btn btn-primary" type="submit">Kirim Brief</button>
+            <a class="btn btn-outline" href="https://wa.me/6285654985244" target="_blank" rel="noopener">Chat WhatsApp</a>
+          </div>
+        </form>
+
+        <script>
+          document.getElementById("waForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let nama = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let pesan = document.getElementById("message").value;
+
+            // Nomor WhatsApp (gunakan format internasional tanpa tanda + atau 0 di depan)
+            let nomorWA = "6285654985244";
+
+            // Format pesan
+            let text = `Halo, saya ingin membuat website.%0A
+Nama: ${nama}%0A
+Email: ${email}%0A
+Pesan: ${pesan}`;
+
+            // Redirect ke WhatsApp
+            window.open(`https://wa.me/${nomorWA}?text=${text}`, "_blank");
+          });
+        </script>
       </div>
     </section>
 
